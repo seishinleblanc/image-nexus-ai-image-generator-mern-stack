@@ -1,4 +1,4 @@
-import { Express } from "express";
+import express from "express";
 import * as dotenv from 'dotenv';
 import cors from 'cors';
 
@@ -9,5 +9,11 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
 app.get('/', async (req, res) => {
-    res.send('Greetings from the Alchemist');
+    res.send('Greetings from the Alchemist.');
 })
+
+const startServer = async () => {
+    app.listen(8080, () => console.log('Server has started on port http://localhost:8080'))
+}
+
+startServer();
