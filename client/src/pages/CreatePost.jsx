@@ -42,8 +42,31 @@ const CreatePost = () => {
     }
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    if(form.prompt && form.photo) {
+      setLoading(true);
+
+      try {
+        const response = await fetch('http://localhost:8080/api/v1/post', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(form),
+        })
+
+        await response.json();
+        navigate('/');
+      } catch (err) {
+        alert(err)
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      alert('Please enter a prompt and generate an image')
+    }
   }
 
   const handleChange = (e) => {
@@ -62,7 +85,7 @@ const CreatePost = () => {
         <p className="mt-2 text-[#666e75] text-[16px] max-w-[500px]">Create imaginative and visually stunning images through DALL-E AI and share them with the community.</p>
       </div>
 
-      <form className="mt-16 max-w-3xl" onSubmit="{handleSubmit}">
+      <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5">
           <FormField 
             labelName="Your name"
