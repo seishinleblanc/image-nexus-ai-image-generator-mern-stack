@@ -78,16 +78,20 @@ const CreatePost = () => {
   }
 
   return (
-    <section className="max-w-7xl mx-auto">
-      <div>
-        <h1 className="font-extrabold text-violet-400 text-[32px]">Transmute</h1>
-        <p className="mt-2 text-[#666e75] text-[16px] max-w-[500px]">The Alchemist can turn any of your thoughts into reality. Simply enter whatever you're thinking of and allow the Alchemist to bring it to life.</p>
+    <section className="max-w-7xl mx-auto crt">
+      <div class="scanline"></div>
+      <div class="typewriter2">
+      <h1 className="font-bold text-[#4bc45b] text-[17px] line07">YOU HAVE SELECTED: GENERATE</h1>
+        <h1 className="font-bold text-[#4bc45b] text-[17px] line08">SOME DATA INPUT WILL BE REQUIRED.</h1>
+        <h1 className="font-bold text-[#4bc45b] text-[17px] line09">PROVIDE THE FOLLOWING INFORMATION:</h1>
+        {/* <p className="mt-2 text-[#4bc45b] text-[16px] max-w-[500px]">I will need to collect some data first. Please provide the following information.</p> */}
       </div>
 
-      <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-5">
+      <form className="mt-12 max-w-3xl" onSubmit={handleSubmit}>
+        <div className="flex flex-col gap-5 anim-box-generate">
+          <div className="flex flex-row gap-20">
           <FormField 
-            labelName="Your name"
+            labelName="YOUR NAME:"
             type="text"
             name="name"
             placeholder="Dahlia Fakename"
@@ -95,17 +99,18 @@ const CreatePost = () => {
             handleChange={handleChange}
           />
           <FormField 
-            labelName="Prompt"
+            labelName="PROMPT:"
             type="text"
             name="prompt"
             placeholder="A vampire narrowly avoiding the sunlight"
             value={form.prompt}
             handleChange={handleChange}
-            isSurpriseMe
-            handleSurpriseMe={handleSurpriseMe}
+            // isSurpriseMe
+            // handleSurpriseMe={handleSurpriseMe}
           />
+          </div>
 
-          <div className="relative bg-transparent border border-violet-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
+          <div className="relative bg-transparent border border-[#4bc45b] text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 w-96 p-3 h-96 flex justify-center items-center">
             {form.photo ? (
               <img
                 src={form.photo}
@@ -129,24 +134,27 @@ const CreatePost = () => {
           </div>
         </div>
 
-        <div className="mt-5 flex gap-5">
-              <button
-              type="button"
-              onClick={generateImage}
-              className="text-white bg-violet-400 font-medium rounded-md text-sm w-full sm:w-64 px-5 py-2.5 text-center"
-              >
-                {generatingImg ? 'Alchemizing...' : 'Alchemize'}
-              </button>
-        </div>
+        <div className="btn-box mt-5">
+          <div className="flex gap-5">
+                <button
+                type="button"
+                onClick={generateImage}
+                className="btn sm:w-64"
+                >
+                  {generatingImg ? 'GENERATING...' : 'GENERATE'}
+                </button>
+          </div>
 
-        <div className="mt-10">
-          <p className="mt-2 text-[#666e75] text-[14px]">Once the Alchemist has created the image you want, you can share it with others in the community.</p>
+          <div className="">
+          {/* <p className="mt-2 text-[#4bc45b] text-[14px]">Once the Alchemist has created the image you want, you can share it with others in the community.</p> */}
           <button
           type="submit"
-          className="mt-3 text-white bg-violet-400 font-medium rounded-md text-sm w-full sm:w-64 px-5 py-2.5 text-center"
+          className="btn sm:w-64"
           >
-            {loading ? 'Sharing...' : 'Share with the community'} 
+            {loading ? 'ARCHIVING...' : 'ARCHIVE IMAGE'} 
           </button>
+
+        </div>
         </div>
       </form>
     </section>

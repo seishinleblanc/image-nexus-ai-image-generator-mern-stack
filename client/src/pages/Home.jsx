@@ -38,7 +38,7 @@ const Home = () => {
                     setAllPosts(result.data.reverse());
                 }
             } catch (error) {
-                alert(error)
+                alert('RELOAD THE PAGE TO AWAKEN THE SERVER')
             } finally {
                 setLoading(false)
             }
@@ -62,21 +62,27 @@ const Home = () => {
 
     return (
         <section className="max-w-7xl mx-auto">
+            <div class="scanline"></div>
             <div>
-                <h1 className="font-extrabold text-violet-400 text-[32px]">Hand of the Alchemist</h1>
-                <p className="mt-2 text-[#666e75] text-[16px] max-w-[500px]">Welcome to Hand of the Alchemist, where thoughts become reality. Browse through a collection of imaginative and visually stunning images transmuted by The Alchemist or have one transmuted for yourself.</p>
+                <h1 className="font-bold text-[#4bc45b] text-[34px] pt-[4rem] line10">IMAGE NEXUS ARCHIVES</h1>
+                {/* <p className="mt-2 text-[#666e75] text-[16px] max-w-[500px]">Welcome to Hand of the Alchemist, where thoughts become reality. Browse through a collection of imaginative and visually stunning images transmuted by The Alchemist or have one transmuted for yourself.</p> */}
             </div>
-
-            <div className="mt-16">
+        <div class="anim-box-archive">
+            <div class="btn-box">
+            <div className="mt-6">
                 <FormField
                     labelName=""
                     type="text"
                     name="text"
-                    placeholder="Search posts"
+                    placeholder="SEARCH ARCHIVE"
                     value={searchText}
                     handleChange={handleSearchChange}
                 />
             </div>
+
+        <a href="./Create-post" class="btn mt-6">GENERATE</a>
+        
+        </div>
 
             <div className="mt-10">
                 {loading ? (
@@ -107,6 +113,7 @@ const Home = () => {
                     </div>
                     </>
                 )}
+            </div>
             </div>
         </section>
   )
